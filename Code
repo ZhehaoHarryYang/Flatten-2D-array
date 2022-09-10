@@ -1,0 +1,25 @@
+class Vector2D(object):
+    
+    # @param vec2d {List[List[int]]}
+    def __init__(self, vec2d):
+        # Initialize your data structure here
+        #O(len(vec2d))
+        self.mat = [x for x in vec2d[::-1] if x != []]
+        self.temp = []
+    # @return {int} a next element
+    def next(self):
+        # O(average(len(list)))
+        if self.temp == []:
+            self.temp = self.mat.pop()[::-1]
+        return self.temp.pop()
+
+    # @return {boolean} true if it has next element
+    # or false
+    def hasNext(self):
+        # O(1)
+        return False if self.mat == [] and self.temp == [] else True
+        
+
+# Your Vector2D object will be instantiated and called as such:
+# i, v = Vector2D(vec2d), []
+# while i.hasNext(): v.append(i.next())
